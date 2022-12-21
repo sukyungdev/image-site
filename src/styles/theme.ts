@@ -1,8 +1,10 @@
 import { DefaultTheme } from 'styled-components';
 
 const colors = {
-  background: '#E1E1E1',
+  background: '#EEE',
+  iconColor: '#808080',
   link: '#2176F6',
+  favorite: '#EF5478',
 };
 
 export type ColorType = typeof colors;

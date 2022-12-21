@@ -7,8 +7,10 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
     }
 
-    body {
-      font-size: 1em;
+    body {}
+
+    h1 {
+      font-size: 2em;
     }
 
     a {
@@ -16,10 +18,20 @@ const GlobalStyle = createGlobalStyle`
       color: inherit;
     }
 
-    @media (min-width: 768px) {
-      body {
-        font-size: 2em;
-      }
+    input,button {
+      border : none;
+      background: none;
+    }
+
+    input:focus {
+      outline : none;
+    }
+    
+    button {
+      cursor: pointer;
+    }
+
+    @media (min-width: 568px) {
     }
     `;
 

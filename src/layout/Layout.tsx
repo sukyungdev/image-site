@@ -6,18 +6,19 @@ import Header from '../components/Header';
 
 const Layout = () => {
   return (
-    <Container>
+    <>
       <Header />
       <Outlet />
       <Footer />
-    </Container>
+    </>
   );
 };
 
-const Container = styled.div`
-  width: 100vw;
-  max-width: 1280px;
-  margin: 0 auto;
-`;
+// const Container = styled.div`
+//   width: 100vw;
+//   padding: 0 2em;
+//   max-width: 1280px;
+//   margin: 0 auto;
+// `;
 
 export default Layout;
