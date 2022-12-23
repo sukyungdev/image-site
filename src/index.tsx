@@ -4,12 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
-import store from './Store';
+import store from './redux/Store/Store';
 import { BrowserRouter } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+document.cookie = 'safeCookie1=foo; SameSite=Lax';
+document.cookie = 'safeCookie2=foo';
+document.cookie = 'crossCookie=bar; SameSite=None; Secure';
+
 root.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
