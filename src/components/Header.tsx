@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BsSearch, BsFillSuitHeartFill } from 'react-icons/bs';
-import { RiPictureInPictureFill } from 'react-icons/ri';
+// import { RiPictureInPictureFill } from 'react-icons/ri';
 
 const Header = () => {
   const [searchName, setSearchName] = useState('');
@@ -20,10 +20,8 @@ const Header = () => {
     <Container>
       <HeaderBox>
         <LogoBox>
-          <Logo>
-            <RiPictureInPictureFill size={'2em'} />
-            <h1>IMG</h1>
-          </Logo>
+          {/* <RiPictureInPictureFill size={'20px'} /> */}
+          <Logo>IMG</Logo>
         </LogoBox>
         <FormBox>
           <Form onSubmit={fetchSearchImageData}>
@@ -63,11 +61,12 @@ const LogoBox = styled.div`
   flex-grow: 1;
 `;
 
-const Logo = styled.div`
+const Logo = styled.h2`
   display: flex;
   align-items: center;
   cursor: pointer;
-  height: 100%;
+  /* width: 50%; */
+  /* height: 100%; */
   color: #3d3d3d;
   &:hover {
     color: black;
