@@ -14,18 +14,20 @@ const MainPage = () => {
     dispatch(FetchImageData());
   }, [dispatch]);
 
-  return (
-    <div>
-      MainPage
-      <Button>theme</Button>
-      {imageReducer.success && <ImageGrid imageReducer={imageReducer} />}
-    </div>
-  );
+  return <Container>{imageReducer.success && <ImageGrid imageReducer={imageReducer} />}</Container>;
 };
 
 const Button = styled.button`
   padding: 10px;
   color: ${(props) => props.theme.colors.link};
+`;
+
+const Container = styled.div`
+  width: 100vw;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1em;
+  border: 1px solid black;
 `;
 
 // const Font = styled.p`

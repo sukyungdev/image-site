@@ -1,4 +1,5 @@
 // import './App.css';
+import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Layout from './layout/Layout';
 import FavoritePage from './pages/FavoritePage';
@@ -6,6 +7,11 @@ import MainPage from './pages/MainPage';
 import GlobalStyle from './styles/GlobalStyles';
 
 function App() {
+  useEffect(() => {
+    document.cookie = 'safeCookie1=foo; SameSite=Lax';
+    document.cookie = 'crossCookie=bar; SameSite=None; Secure';
+  }, []);
+
   return (
     <>
       <GlobalStyle />

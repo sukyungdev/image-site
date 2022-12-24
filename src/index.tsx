@@ -10,20 +10,17 @@ import { ThemeProvider } from 'styled-components';
 import { theme } from './styles/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
-document.cookie = 'safeCookie1=foo; SameSite=Lax';
-document.cookie = 'safeCookie2=foo';
-document.cookie = 'crossCookie=bar; SameSite=None; Secure';
 
 root.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <Provider store={store}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </Provider>
-    </ThemeProvider>
-  </React.StrictMode>
+  // <React.StrictMode>
+  <ThemeProvider theme={theme}>
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  </ThemeProvider>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function
