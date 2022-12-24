@@ -1,5 +1,6 @@
 import reset from 'styled-reset';
 import { createGlobalStyle } from 'styled-components';
+import '../App.css';
 
 const GlobalStyle = createGlobalStyle`
     ${reset}
@@ -7,7 +8,9 @@ const GlobalStyle = createGlobalStyle`
       box-sizing: border-box;
     }
 
-    body {}
+    body {
+      font-family: 'NanumSquareNeo';
+    }
 
     h1 {
       font-size: 2em;

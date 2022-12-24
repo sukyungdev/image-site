@@ -4,8 +4,7 @@ import {
   ImageType,
   ImageDispatchType,
 } from '../actions/ImageActionsTypes';
-
-interface InitialState {
+export interface InitialState {
   success: boolean;
   images?: ImageType;
 }

@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { RootReducerType } from '../redux/Store/Store';
 import { FetchImageData } from '../redux/actions/ImageAction';
 import { useDispatch } from 'react-redux';
+import ImageGrid from '../components/ImageGrid';
 
 const MainPage = () => {
   const imageReducer = useSelector((state: RootReducerType) => state.ImageReducer);
@@ -17,16 +18,7 @@ const MainPage = () => {
     <div>
       MainPage
       <Button>theme</Button>
-      {imageReducer.success && (
-        <div>
-          {imageReducer.images?.map((item) => (
-            <div key={item.id}>
-              <img src={item.urls.small} alt="img" />
-              <p>{item.user.username}</p>
-            </div>
-          ))}
-        </div>
-      )}
+      {imageReducer.success && <ImageGrid imageReducer={imageReducer} />}
     </div>
   );
 };

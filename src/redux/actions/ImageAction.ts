@@ -7,7 +7,7 @@ export const FetchImageData = (): any => async (dispatch: Dispatch<ImageDispatch
   try {
     const res = axios.get(`https://api.unsplash.com/photos/random?count=30&client_id=${API_KEY}`);
     const data = (await res).data;
-    console.log(data);
+    // console.log(data);
     dispatch({
       type: DATA_FETCH_SUCCESS,
       payload: data,
