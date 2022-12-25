@@ -5,7 +5,12 @@ import { ImageDispatchType, DATA_FETCH_SUCCESS, DATA_FETCH_FAIL } from './ImageA
 const API_KEY = `Z3Ch5OhRaGeiYEiKBNz89bXGjWQoc1Z-30W-yYdrCOs`;
 export const FetchImageData = (): any => async (dispatch: Dispatch<ImageDispatchType>) => {
   try {
-    const res = axios.get(`https://api.unsplash.com/photos/random?count=30&client_id=${API_KEY}`);
+    const res = axios.get(`https://api.unsplash.com/photos/random`, {
+      params: {
+        client_id: API_KEY,
+        count: 10,
+      },
+    });
     const data = (await res).data;
     // console.log(data);
     dispatch({
