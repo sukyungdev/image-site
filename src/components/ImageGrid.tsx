@@ -4,7 +4,7 @@ import { InitialState } from '../redux/reducers/ImageReducer';
 type ImageReducerType = InitialState | undefined;
 
 const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
-  console.log(imageReducer);
+  // console.log(imageReducer);
   return (
     <div>
       <ImgGrid>

@@ -7,6 +7,8 @@ import {
 export interface InitialState {
   success: boolean;
   images?: ImageType;
+  total?: number;
+  total_pages?: number;
 }
 
 const initialState: InitialState = {
@@ -25,7 +27,9 @@ const ImageReducer = (state = initialState, action: ImageDispatchType): InitialS
       return {
         ...state,
         success: true,
-        images: action.payload,
+        images: action.payload.data,
+        total: action.payload.total,
+        total_pages: action.payload.total_pages,
       };
 
     default:

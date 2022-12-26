@@ -7,11 +7,6 @@ import MainPage from './pages/MainPage';
 import GlobalStyle from './styles/GlobalStyles';
 
 function App() {
-  useEffect(() => {
-    document.cookie = 'safeCookie1=foo; SameSite=Lax';
-    document.cookie = 'crossCookie=bar; SameSite=None; Secure';
-  }, []);
-
   return (
     <>
       <GlobalStyle />

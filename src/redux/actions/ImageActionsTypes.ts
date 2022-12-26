@@ -1,9 +1,10 @@
 export const DATA_FETCH_SUCCESS = 'DATA_SUCCESS';
 export const DATA_FETCH_FAIL = 'DATA_FAIL';
 
-export type ImageType = DataObjectType[];
-
-interface DataObjectType {
+// export type ImageType = DataObjectType[];
+export type ImageType = ImageDataType[];
+export type ImageDispatchType = dataFailDispatch | dataSuccessDispatch;
+interface ImageDataType {
   id: string;
   created_at: string;
   alt_description: string;
@@ -17,10 +18,22 @@ interface DataObjectType {
   links: {
     download: string;
   };
+  likes: number;
   user: {
     id: string;
     username: string;
+    links: {
+      self: string;
+    };
+    profile_image: {
+      small: string;
+    };
   };
+  exif?: {
+    name: string;
+  };
+  views?: number;
+  downloads?: number;
 }
 
 export interface dataFailDispatch {
@@ -29,7 +42,5 @@ export interface dataFailDispatch {
 
 export interface dataSuccessDispatch {
   type: typeof DATA_FETCH_SUCCESS;
-  payload: DataObjectType[];
+  payload: { total?: number; total_pages?: number; data: ImageDataType[] };
 }
-
-export type ImageDispatchType = dataFailDispatch | dataSuccessDispatch;

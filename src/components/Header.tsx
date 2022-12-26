@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { BsSearch, BsFillSuitHeartFill } from 'react-icons/bs';
-// import { RiPictureInPictureFill } from 'react-icons/ri';
+import { useDispatch } from 'react-redux';
+import { FetchImageData } from '../redux/actions/ImageAction';
 
 const Header = () => {
   const [searchName, setSearchName] = useState('');
+  const dispatch = useDispatch();
 
   const SearchHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchName(e.target.value);
@@ -13,6 +15,7 @@ const Header = () => {
 
   const fetchSearchImageData = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    dispatch(FetchImageData(searchName));
     setSearchName('');
   };
 
@@ -20,7 +23,6 @@ const Header = () => {
     <Container>
       <HeaderBox>
         <LogoBox>
-          {/* <RiPictureInPictureFill size={'20px'} /> */}
           <Logo>IMG</Logo>
         </LogoBox>
         <FormBox>
@@ -65,8 +67,6 @@ const Logo = styled.h2`
   display: flex;
   align-items: center;
   cursor: pointer;
-  /* width: 50%; */
-  /* height: 100%; */
   color: #3d3d3d;
   &:hover {
     color: black;
