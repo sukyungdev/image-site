@@ -1,18 +1,24 @@
-import React from 'react';
+import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { InitialState } from '../redux/reducers/ImageReducer';
+import { RootReducerType } from '../redux/Store/Store';
+import PaginationBox from './PaginationBox';
+
 type ImageReducerType = InitialState | undefined;
 
 const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
-  // console.log(imageReducer);
+  const { total } = useSelector((state: RootReducerType) => state.ImageReducer);
   return (
     <div>
       <ImgGrid>
         {imageReducer &&
-          imageReducer.images?.map((item) => (
-            <Img src={item.urls.regular} alt="img" key={item.id} />
-          ))}
+          imageReducer.images?.map(
+            (item: { urls: { regular: string | undefined }; id: React.Key | null | undefined }) => (
+              <Img src={item.urls.regular} alt="img" key={item.id} />
+            )
+          )}
       </ImgGrid>
+      {total && <PaginationBox />}
     </div>
   );
 };

@@ -15,7 +15,8 @@ const Header = () => {
 
   const fetchSearchImageData = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    dispatch(FetchImageData(searchName));
+    dispatch(FetchImageData(searchName, 1));
+    dispatch({ type: 'SEARCH_NAME', payload: { searchName: searchName, page: 1 } });
     setSearchName('');
   };
 

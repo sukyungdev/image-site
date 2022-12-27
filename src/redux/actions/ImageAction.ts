@@ -4,7 +4,7 @@ import { ImageDispatchType, DATA_FETCH_SUCCESS, DATA_FETCH_FAIL } from './ImageA
 
 const API_KEY = `Z3Ch5OhRaGeiYEiKBNz89bXGjWQoc1Z-30W-yYdrCOs`;
 export const FetchImageData =
-  (query?: string): any =>
+  (query?: string, page?: any): any =>
   async (dispatch: Dispatch<ImageDispatchType>) => {
     // SameSite cookie
     document.cookie = 'safeCookie1=foo; SameSite=Lax';
@@ -16,13 +16,14 @@ export const FetchImageData =
       const res = axios.get(
         `${
           query
-            ? `https://api.unsplash.com/search/photos/?query=${query}`
+            ? `https://api.unsplash.com/search/photos/?query=${query}${page ? `&page=${page}` : ''}`
             : 'https://api.unsplash.com/photos/random'
         }`,
         {
           params: {
             client_id: API_KEY,
-            count: 10,
+            count: 30,
+            per_page: 24,
             // crossDomain: true,
             // withCredentials: true,
           },
@@ -30,16 +31,14 @@ export const FetchImageData =
       );
       // query의 유무에 따라서 data type이 다르다.
       if (query) {
-        let { total, total_pages, results } = (await res).data;
-        data = results;
-        // console.log(total, total_pages, data);
+        let { total, total_pages, results: data } = (await res).data;
+        // data = results;
         dispatch({
           type: DATA_FETCH_SUCCESS,
           payload: { data, total, total_pages },
         });
       } else {
         data = (await res).data;
-        // console.log('쿼리가 없는 경우', data);
         dispatch({
           type: DATA_FETCH_SUCCESS,
           payload: { data },

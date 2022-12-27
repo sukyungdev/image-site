@@ -6,12 +6,13 @@ import {
 } from '../actions/ImageActionsTypes';
 export interface InitialState {
   success: boolean;
-  images?: ImageType;
+  images: ImageType;
   total?: number;
   total_pages?: number;
 }
 
 const initialState: InitialState = {
+  images: [],
   success: false,
 };
 
@@ -28,6 +29,7 @@ const ImageReducer = (state = initialState, action: ImageDispatchType): InitialS
         ...state,
         success: true,
         images: action.payload.data,
+        // images: [...state.images, ...action.payload.data],
         total: action.payload.total,
         total_pages: action.payload.total_pages,
       };
