@@ -50,18 +50,9 @@ const GithubIcon = styled.div`
   display: block;
   width: 24px;
   height: 24px;
-  opacity: 0.5;
-
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 
 const Github = styled.a`
   font-size: 1em;
-  opacity: 0.5;
-  &:hover {
-    opacity: 0.8;
-  }
 `;
 export default Footer;

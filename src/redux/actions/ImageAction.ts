@@ -22,7 +22,7 @@ export const FetchImageData =
         {
           params: {
             client_id: API_KEY,
-            count: 30,
+            count: 24,
             per_page: 24,
             // crossDomain: true,
             // withCredentials: true,

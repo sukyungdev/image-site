@@ -23,6 +23,10 @@ const Container = styled.div`
   max-width: 1280px;
   margin: 0 auto;
   padding: 1em;
+
+  @media (min-width: 368px) {
+    padding: 2em;
+  }
 `;
 
 export default MainPage;

@@ -9,7 +9,7 @@ type ImageReducerType = InitialState | undefined;
 const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
   const { total } = useSelector((state: RootReducerType) => state.ImageReducer);
   return (
-    <div>
+    <div className="container">
       <ImgGrid>
         {imageReducer &&
           imageReducer.images?.map(
@@ -29,14 +29,14 @@ const ImgGrid = styled.div`
   grid-template-columns: 1fr;
   grid-auto-rows: minmax(150px, auto);
 
-  @media (min-width: 368px) {
+  @media (min-width: 568px) {
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: minmax(200px, auto);
   }
 
   @media (min-width: 768px) {
     grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(200px, auto);
+    grid-auto-rows: minmax(250px, auto);
   }
 `;
 
