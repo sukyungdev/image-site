@@ -12,7 +12,7 @@ function App() {
       <GlobalStyle />
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="/" element={<MainPage />} />
+          {/* <Route path="/" element={<MainPage />} /> */}
           <Route path="/favoritePage" element={<FavoritePage />} />
         </Route>
       </Routes>
