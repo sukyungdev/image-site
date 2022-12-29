@@ -5,6 +5,10 @@ import { RootReducerType } from '../redux/Store/Store';
 import PaginationBox from './PaginationBox';
 
 type ImageReducerType = InitialState | undefined;
+interface Item {
+  urls: { regular: string | undefined };
+  id: React.Key | null | undefined;
+}
 
 const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
   const { total } = useSelector((state: RootReducerType) => state.ImageReducer);
@@ -12,11 +16,9 @@ const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
     <div className="container">
       <ImgGrid>
         {imageReducer &&
-          imageReducer.images?.map(
-            (item: { urls: { regular: string | undefined }; id: React.Key | null | undefined }) => (
-              <Img src={item.urls.regular} alt="img" key={item.id} />
-            )
-          )}
+          imageReducer.images?.map((item: Item) => (
+            <Img src={item.urls.regular} alt="img" key={item.id} />
+          ))}
       </ImgGrid>
       {total && <PaginationBox />}
     </div>
@@ -35,6 +37,11 @@ const ImgGrid = styled.div`
   }
 
   @media (min-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(250px, auto);
+  }
+
+  @media (min-width: 1140px) {
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(250px, auto);
   }
