@@ -19,7 +19,7 @@ const MainPage = () => {
   return (
     <Container>
       <Keyword />
-      {/* {imageReducer.success && <ImageGrid imageReducer={imageReducer} />} */}
+      {imageReducer.success && <ImageGrid imageReducer={imageReducer} />}
     </Container>
   );
 };
