@@ -31,6 +31,7 @@ const Header = () => {
             onClick={() => {
               dispatch(FetchImageData());
               navigate('/');
+              dispatch({ type: 'SEARCH_DELETE' });
             }}
           >
             <BsCamera2 size={35} />

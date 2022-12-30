@@ -10,7 +10,8 @@ const SearchNameReducer = (
   switch (action.type) {
     case 'SEARCH_NAME':
       return { ...state, searchName: action.payload.searchName, page: action.payload.page };
-
+    case 'SEARCH_DELETE':
+      return { ...state, searchName: '', page: 1 };
     default:
       return state;
   }
