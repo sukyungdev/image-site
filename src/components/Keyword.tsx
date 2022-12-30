@@ -1,12 +1,20 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import styled from 'styled-components';
+import { FetchImageData } from '../redux/actions/ImageAction';
 
 const Keyword = () => {
+  const dispatch = useDispatch();
   const keywords = ['Travel', 'Nature', 'Animal', 'Fashion', 'Food', 'Business', 'Work', 'Health'];
+  const keywordHandler = (item: string) => {
+    dispatch(FetchImageData(item, 1));
+  };
   return (
     <Container>
       {keywords.map((item, index) => (
-        <Button key={index}>{item}</Button>
+        <Button key={index} onClick={() => keywordHandler(item)}>
+          {item}
+        </Button>
       ))}
     </Container>
   );
