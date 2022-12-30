@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootReducerType } from '../redux/Store/Store';
@@ -10,12 +10,23 @@ import ImageGrid from '../components/ImageGrid';
 const MainPage = () => {
   const imageReducer = useSelector((state: RootReducerType) => state.ImageReducer);
   const dispatch = useDispatch();
+  const [load, setLoad] = useState(true);
 
   useEffect(() => {
+    setLoad(true);
     dispatch(FetchImageData());
+    setLoad(false);
   }, [dispatch]);
 
-  return <Container>{imageReducer.success && <ImageGrid imageReducer={imageReducer} />}</Container>;
+  return (
+    <Container>
+      {load === false && imageReducer.success ? (
+        <ImageGrid imageReducer={imageReducer} />
+      ) : (
+        <div>loading...</div>
+      )}
+    </Container>
+  );
 };
 
 const Container = styled.div`

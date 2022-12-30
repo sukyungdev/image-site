@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { BsSearch, BsFillSuitHeartFill } from 'react-icons/bs';
+import { BsSearch, BsFillSuitHeartFill, BsCamera2 } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { FetchImageData } from '../redux/actions/ImageAction';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [searchName, setSearchName] = useState('');
@@ -20,11 +21,20 @@ const Header = () => {
     setSearchName('');
   };
 
+  const navigate = useNavigate();
+
   return (
     <Container>
       <HeaderBox>
         <LogoBox>
-          <Logo>IMG</Logo>
+          <Logo
+            onClick={() => {
+              dispatch(FetchImageData());
+              navigate('/');
+            }}
+          >
+            <BsCamera2 size={35} />
+          </Logo>
         </LogoBox>
         <FormBox>
           <Form onSubmit={fetchSearchImageData}>
@@ -34,7 +44,11 @@ const Header = () => {
             </Button>
           </Form>
         </FormBox>
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            navigate('/favoritePage');
+          }}
+        >
           <BsFillSuitHeartFill />
         </IconButton>
       </HeaderBox>
@@ -58,14 +72,18 @@ const HeaderBox = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 1em;
+  @media (min-width: 368px) {
+    padding: 0 2em;
+  }
 `;
 
 const LogoBox = styled.div`
   flex-grow: 1;
 `;
 
-const Logo = styled.h2`
+const Logo = styled.div`
   display: flex;
+  width: 35px;
   align-items: center;
   cursor: pointer;
   color: #3d3d3d;

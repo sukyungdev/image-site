@@ -17,7 +17,7 @@ export const FetchImageData =
         `${
           query
             ? `https://api.unsplash.com/search/photos/?query=${query}${page ? `&page=${page}` : ''}`
-            : 'https://api.unsplash.com/photos/random'
+            : 'https://api.unsplash.com/photos'
         }`,
         {
           params: {
