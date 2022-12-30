@@ -6,25 +6,20 @@ import { RootReducerType } from '../redux/Store/Store';
 import { FetchImageData } from '../redux/actions/ImageAction';
 import { useDispatch } from 'react-redux';
 import ImageGrid from '../components/ImageGrid';
+import Keyword from '../components/Keyword';
 
 const MainPage = () => {
   const imageReducer = useSelector((state: RootReducerType) => state.ImageReducer);
   const dispatch = useDispatch();
-  const [load, setLoad] = useState(true);
 
   useEffect(() => {
-    setLoad(true);
     dispatch(FetchImageData());
-    setLoad(false);
   }, [dispatch]);
 
   return (
     <Container>
-      {load === false && imageReducer.success ? (
-        <ImageGrid imageReducer={imageReducer} />
-      ) : (
-        <div>loading...</div>
-      )}
+      <Keyword />
+      {/* {imageReducer.success && <ImageGrid imageReducer={imageReducer} />} */}
     </Container>
   );
 };
