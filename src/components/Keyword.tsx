@@ -8,6 +8,7 @@ const Keyword = () => {
   const keywords = ['Travel', 'Nature', 'Animal', 'Fashion', 'Food', 'Business', 'Work', 'Health'];
   const keywordHandler = (item: string) => {
     dispatch(FetchImageData(item, 1));
+    dispatch({ type: 'SEARCH_NAME', payload: { searchName: item, page: 1 } });
   };
   return (
     <Container>
