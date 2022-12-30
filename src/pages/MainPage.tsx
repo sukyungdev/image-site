@@ -10,14 +10,19 @@ import Keyword from '../components/Keyword';
 
 const MainPage = () => {
   const imageReducer = useSelector((state: RootReducerType) => state.ImageReducer);
+  const { searchName } = useSelector((state: RootReducerType) => state.SearchNameReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(FetchImageData());
   }, [dispatch]);
 
+  console.log(searchName);
   return (
     <Container>
+      <TitleBox>
+        {searchName ? <Title>{searchName}</Title> : <Title>Beautiful Free Photos and Images</Title>}
+      </TitleBox>
       <Keyword />
       {imageReducer.success && <ImageGrid imageReducer={imageReducer} />}
     </Container>
@@ -31,8 +36,18 @@ const Container = styled.div`
   padding: 1em;
 
   @media (min-width: 368px) {
-    padding: 2em;
+    padding: 1em 2em;
   }
 `;
 
+const TitleBox = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 1em 0;
+  margin-bottom: 1em;
+`;
+
+const Title = styled.div`
+  font-size: 1.5em;
+`;
 export default MainPage;
