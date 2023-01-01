@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
       color: inherit;
     }
 
-    a:hover {opacity: 0.8;}
+    a:hover {opacity: 1;}
 
     input,button {
       border : none;
