@@ -4,7 +4,7 @@ export const DATA_FETCH_FAIL = 'DATA_FAIL';
 // export type ImageType = DataObjectType[];
 export type ImageType = ImageDataType[];
 export type ImageDispatchType = dataFailDispatch | dataSuccessDispatch;
-interface ImageDataType {
+export interface ImageDataType {
   id: string;
   created_at: string;
   alt_description: string;

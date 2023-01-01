@@ -16,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
     a {
       text-decoration: none;
       color: inherit;
-      opacity: 0.5;
     }
 
     a:hover {opacity: 0.8;}
