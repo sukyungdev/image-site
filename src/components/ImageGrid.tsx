@@ -1,14 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import styled from 'styled-components';
 import { InitialState } from '../redux/reducers/ImageReducer';
 import { ImageDataType } from '../redux/actions/ImageActionsTypes';
-import { RootReducerType } from '../redux/Store/Store';
-import PaginationBox from './PaginationBox';
 import { BsSuitHeartFill, BsDownload } from 'react-icons/bs';
+import ImgModal from './ImgModal';
 
 type ImageReducerType = InitialState | undefined;
+
 const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
-  const { total } = useSelector((state: RootReducerType) => state.ImageReducer);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalData, setModalData] = useState({});
+
+  const ImgClick = (item: ImageDataType) => {
+    setModalOpen(true);
+    setModalData(item);
+  };
 
   const addFavorite = () => {
     alert('저장되었습니다!');
@@ -19,7 +25,7 @@ const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
       <Grid>
         {imageReducer &&
           imageReducer.images?.map((item: ImageDataType) => (
-            <ImgBox>
+            <ImgBox onClick={() => ImgClick(item)}>
               <ButtonBox>
                 <Button onClick={addFavorite}>
                   <BsSuitHeartFill />
@@ -30,12 +36,11 @@ const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
                   </Button>
                 </a>
               </ButtonBox>
-
               <Img src={item.urls.regular} alt="img" key={item.id} />
             </ImgBox>
           ))}
       </Grid>
-      {total && <PaginationBox />}
+      {modalOpen && <ImgModal modalData={modalData} setModalOpen={setModalOpen} />}
     </div>
   );
 };
@@ -64,6 +69,7 @@ const Grid = styled.div`
 
 const ImgBox = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 
 const Img = styled.img`

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { RootReducerType } from '../redux/Store/Store';
@@ -7,10 +7,12 @@ import { FetchImageData } from '../redux/actions/ImageAction';
 import { useDispatch } from 'react-redux';
 import ImageGrid from '../components/ImageGrid';
 import Keyword from '../components/Keyword';
+import PaginationBox from '../components/PaginationBox';
 
 const MainPage = () => {
   const imageReducer = useSelector((state: RootReducerType) => state.ImageReducer);
   const { searchName } = useSelector((state: RootReducerType) => state.SearchNameReducer);
+  const { total } = useSelector((state: RootReducerType) => state.ImageReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,6 +27,7 @@ const MainPage = () => {
       </TitleBox>
       <Keyword />
       {imageReducer.success && <ImageGrid imageReducer={imageReducer} />}
+      {total && <PaginationBox />}
     </Container>
   );
 };
