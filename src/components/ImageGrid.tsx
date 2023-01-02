@@ -40,7 +40,9 @@ const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
             </ImgBox>
           ))}
       </Grid>
-      {modalOpen && <ImgModal modalData={modalData} setModalOpen={setModalOpen} />}
+      {modalOpen && (
+        <ImgModal modalData={modalData} setModalOpen={setModalOpen} addFavorite={addFavorite} />
+      )}
     </div>
   );
 };
@@ -56,15 +58,15 @@ const Grid = styled.div`
     grid-auto-rows: minmax(200px, auto);
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 992px) {
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(250px, auto);
   }
 
-  @media (min-width: 1140px) {
+  /* @media (min-width: 1140px) {
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(250px, auto);
-  }
+  } */
 `;
 
 const ImgBox = styled.div`

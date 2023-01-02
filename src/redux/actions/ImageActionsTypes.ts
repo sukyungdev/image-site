@@ -26,7 +26,7 @@ export interface ImageDataType {
       self: string;
     };
     profile_image: {
-      small: string;
+      medium: string;
     };
   };
   exif?: {
