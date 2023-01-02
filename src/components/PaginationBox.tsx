@@ -37,7 +37,8 @@ const PaginationBox = () => {
 };
 
 const Container = styled.div`
-  width: 100vw;
+  max-width: 1280px;
+  margin: 0 auto;
   display: flex;
   justify-content: center;
   padding: 1em 0;
