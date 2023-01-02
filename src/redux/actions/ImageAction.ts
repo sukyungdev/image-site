@@ -2,7 +2,6 @@ import axios from 'axios';
 import { Dispatch } from 'redux';
 import { ImageDispatchType, DATA_FETCH_SUCCESS, DATA_FETCH_FAIL } from './ImageActionsTypes';
 
-const API_KEY = `Z3Ch5OhRaGeiYEiKBNz89bXGjWQoc1Z-30W-yYdrCOs`;
 export const FetchImageData =
   (query?: string, page?: any): any =>
   async (dispatch: Dispatch<ImageDispatchType>) => {
@@ -21,7 +20,7 @@ export const FetchImageData =
         }`,
         {
           params: {
-            client_id: API_KEY,
+            client_id: process.env.REACT_APP_API_KEY,
             count: 24,
             per_page: 24,
             // crossDomain: true,
