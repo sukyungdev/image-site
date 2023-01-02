@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { InitialState } from '../redux/reducers/ImageReducer';
 import { ImageDataType } from '../redux/actions/ImageActionsTypes';
 import { BsSuitHeartFill, BsDownload } from 'react-icons/bs';
+import { message } from 'antd';
 import ImgModal from './ImgModal';
 
 type ImageReducerType = InitialState | undefined;
@@ -17,15 +18,16 @@ const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
   };
 
   const addFavorite = () => {
-    alert('저장되었습니다!');
+    // alert('저장되었습니다!');
+    message.info('사진이 저장되었습니다.');
   };
 
   return (
-    <div className="container">
+    <>
       <Grid>
         {imageReducer &&
           imageReducer.images?.map((item: ImageDataType) => (
-            <ImgBox onClick={() => ImgClick(item)}>
+            <ImgBox>
               <ButtonBox>
                 <Button onClick={addFavorite}>
                   <BsSuitHeartFill />
@@ -36,18 +38,19 @@ const ImageGrid = ({ imageReducer }: { imageReducer: ImageReducerType }) => {
                   </Button>
                 </a>
               </ButtonBox>
-              <Img src={item.urls.regular} alt="img" key={item.id} />
+              <Img src={item.urls.regular} alt="img" key={item.id} onClick={() => ImgClick(item)} />
             </ImgBox>
           ))}
       </Grid>
       {modalOpen && (
         <ImgModal modalData={modalData} setModalOpen={setModalOpen} addFavorite={addFavorite} />
       )}
-    </div>
+    </>
   );
 };
 
 const Grid = styled.div`
+  margin-bottom: 1em;
   display: grid;
   grid-gap: 1em;
   grid-template-columns: 1fr;
@@ -62,11 +65,6 @@ const Grid = styled.div`
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: minmax(250px, auto);
   }
-
-  /* @media (min-width: 1140px) {
-    grid-template-columns: repeat(4, 1fr);
-    grid-auto-rows: minmax(250px, auto);
-  } */
 `;
 
 const ImgBox = styled.div`
